@@ -1,0 +1,59 @@
+<section fxLayout="column" fxLayoutAlign="start center" fxLayoutGap="16px">
+
+	<wm-paypal [style.width.px]="width" [height]="height" [layout]="layout" [shape]="shape" [color]="color"
+		[label]="label" [tagline]="tagline.checked" [disabled]="disabled.checked" [request]="order"
+		(cancel)="onCancel($event)" (error)="onError($event)" #paypal enableStandardCardFields></wm-paypal>
+
+	<!--div id="card-fields-container"></div-->
+
+	<wm-paypal [style.width.px]="width" [request]="order" color="black" fundingSource="card"></wm-paypal>
+
+	<mat-divider fxFill></mat-divider>
+
+	<div fxLayout="column" fxLayoutGap="16px">
+
+		<mat-form-field>
+			<mat-label>Layout</mat-label>
+			<mat-select [(value)]="layout">
+				<mat-option value="horizontal">Horizontal</mat-option>
+				<mat-option value="vertical">Vertical</mat-option>
+			</mat-select>
+		</mat-form-field>
+
+		<mat-form-field>
+			<mat-label>Color</mat-label>
+			<mat-select [(value)]="color">
+				<mat-option value="gold">Gold</mat-option>
+				<mat-option value="blue">Blue</mat-option>
+				<mat-option value="silver">Silver</mat-option>
+				<mat-option value="black">Black</mat-option>
+				<mat-option value="white">White</mat-option>
+			</mat-select>
+		</mat-form-field>
+
+		<mat-form-field>
+			<mat-label>Label</mat-label>
+			<mat-select [(value)]="label">
+				<mat-option value="paypal">Paypal</mat-option>
+				<mat-option value="checkout">Checkout</mat-option>
+				<mat-option value="buynow">Buy Now</mat-option>
+				<mat-option value="pay">Pay</mat-option>
+				<mat-option value="installment">Installment</mat-option>
+			</mat-select>
+		</mat-form-field>
+
+		<mat-form-field>
+			<mat-label>Shape</mat-label>
+			<mat-select [(value)]="shape">
+				<mat-option value="rect">Rect</mat-option>
+				<mat-option value="pill">Pill</mat-option>
+			</mat-select>
+		</mat-form-field>
+
+		<mat-checkbox [disabled]="layout !== 'horizontal'" #tagline>Tagline</mat-checkbox>
+
+		<mat-checkbox #disabled>Disabled</mat-checkbox>
+
+	</div>
+
+</section>
